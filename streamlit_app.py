@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit.components.v1 import html
-from models.predict import model  # Reuse your existing model
-from schema.user_input import UserInput  # Reuse your Pydantic model
+from models.predict import model
+from schema.user_input import UserInput
 
 # ======== HTML/CSS Customization ========
 st.set_page_config(layout="wide")
