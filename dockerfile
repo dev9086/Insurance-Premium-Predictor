@@ -1,17 +1,20 @@
-# Use Python 3.11 base image
-FROM python:3.11-slim
+# Use Python 3.9 base image for better compatibility
+FROM python:3.9-slim
 
+# Set working directory
+WORKDIR /app
 
-WORKDIR /app1
-
-
+# Copy requirements first for better Docker layer caching
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
+# Upgrade pip and install dependencies
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
+# Copy all application files
 COPY . .
 
-
+# Expose port
 EXPOSE 8000
 
 # Command to start FastAPI application
